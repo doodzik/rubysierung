@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require 'rubysierung/CallBaecker'
+require 'CallBaecker'
 require 'rubysierung'
 
 class CustomTyp
