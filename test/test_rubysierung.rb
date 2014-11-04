@@ -97,14 +97,4 @@ class RubysierungTest < Minitest::Test
       assert_equal(true, true)
     end
   end
-
-  # TODO add better raise errors
-  def test_raise_error_type_normal
-    begin
-      Setup.example5(foo: 4, bar: 2)
-      assert_equal(false, true)
-    rescue Rubysierung::Error::Strict => e
-      assert_equal(e.to_s, "Rubysierung::Error::Strict: Class:String, DuckType:to_str, Method:Setup:/Users/dudzik/prog/rubysierung/test/test_rubysierung.rbexample5:31 -- called on /Users/dudzik/prog/rubysierung/test/test_rubysierung.rb:104:in `test_raise_error_type_normal' with foo:4 of Fixnum doesn't respond to to_str")
-    end
-  end
 end
