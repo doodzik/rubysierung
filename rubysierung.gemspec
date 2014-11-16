@@ -8,9 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Rubysierung::VERSION
   spec.authors       = ["doodzik"]
   spec.email         = ["4004blog@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Rubysierung is the type system Ruby deserves}
+  spec.homepage      = "https://github.com/doodzik/rubysierung"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -20,6 +19,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "CallBaecker", "> 0.0.2"
+  spec.add_development_dependency "CallBaecker", "> 0.0.3"
   spec.add_development_dependency "minitest"
 end

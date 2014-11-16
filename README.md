@@ -25,6 +25,8 @@ Or install it yourself as:
 
 ## Usage
 
+## Have a look at all available types in ./lib/rubysierung/types
+
 ```ruby
 require 'CallBaecker'
 require 'rubysierung'
@@ -41,7 +43,7 @@ class Example
 
   # add custom Types
   # [TypeClass, StandartDuckTypeAsSymbol, StrictDuckTypeAsSymbol]# TODO change to proper name
-  @__type_add.call([CustomTyp, :to_s, :to_int])
+  @__add_type[CustomTyp, :to_s, :to_str]
 
   # define foo to respond to :to_s and bar to :to_i
   def one(foo: String, bar: Integer)
@@ -73,10 +75,6 @@ def one(foo:, bar:)
   [sFoo, iBar]
 end
 ```
-
-## Roadmap
-* add all Standard Types
-* add feature to add a default argument for a specified Type
 
 ## Contributing
 

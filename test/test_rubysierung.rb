@@ -9,7 +9,7 @@ class Setup
   extend Rubysierung
   include CallBaecker
 
-  @__type_add.call([CustomTyp, :to_s, :to_str])
+  @__add_type[CustomTyp, :to_s, :to_str]
 
   def example1(foo: String, bar: Integer)
     [foo, bar]
@@ -32,6 +32,11 @@ class Setup
   def self.example5(foo: Strict::String, bar: Integer)
     [foo, bar]
   end
+
+  # Default
+  # def self.example6(foo: Default.new(String, 'bar'), bar: Default.new(String, 'foo'))
+  #   [foo, bar]
+  # end
 end
 
 class RubysierungTest < Minitest::Test
@@ -97,4 +102,10 @@ class RubysierungTest < Minitest::Test
       assert_equal(true, true)
     end
   end
+
+  # def test_example_6_default_value
+  #   foo, bar = Setup.example5(bar: 'bar')
+  #   assert_equal('bar', bar)
+  #   assert_equal('bar', foo)
+  # end
 end
