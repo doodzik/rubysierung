@@ -25,7 +25,7 @@ Or install it yourself as:
 
 ## Usage
 
-## Have a look at all available types in ./lib/rubysierung/types
+## Have a look at all available [Types] (https://github.com/doodzik/rubysierung/blob/master/lib/rubysierung/types.rb#L3-L19)
 
 ```ruby
 require 'CallBaecker'
