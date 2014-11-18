@@ -42,7 +42,7 @@ class Example
   # if the type doesnt match Rubisierung will raise an Error messages
 
   # add custom Types
-  # [TypeClass, StandartDuckTypeAsSymbol, StrictDuckTypeAsSymbol]# TODO change to proper name
+  # [TypeClass, StandardDuckTypeAsSymbol, StrictDuckTypeAsSymbol]# TODO change to proper name
   @__add_type[CustomType, :to_s, :to_str]
 
   # define foo to respond to :to_s and bar to :to_i
