@@ -10,6 +10,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 # ruby 2.1.0
+# You can only use Rubysierung in a file context, see issue #5 and #7.
 
 gem 'rubysierung'
 gem 'CallBaecker', '~> 0.0.3'
@@ -62,6 +63,11 @@ class Example
 
   # define foo to respond to :to_str (strict type)
   def self.four(foo: Strict::String, bar: Integer)
+    [foo, bar]
+  end
+  
+  # with default parameter
+  def self.five(foo: String||'I am a default :)', bar: Integer||42)
     [foo, bar]
   end
 end

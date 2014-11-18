@@ -34,9 +34,9 @@ class Setup
   end
 
   # Default
-  # def self.example6(foo: Default.new(String, 'bar'), bar: Default.new(String, 'foo'))
-  #   [foo, bar]
-  # end
+  def self.example6(foo: String||'bar', bar: String||'foo')
+    [foo, bar]
+  end
 end
 
 class RubysierungTest < Minitest::Test
@@ -103,9 +103,9 @@ class RubysierungTest < Minitest::Test
     end
   end
 
-  # def test_example_6_default_value
-  #   foo, bar = Setup.example5(bar: 'bar')
-  #   assert_equal('bar', bar)
-  #   assert_equal('bar', foo)
-  # end
+  def test_example_6_default_value
+     foo, bar = Setup.example6(bar: 'buz')
+     assert_equal('buz', bar)
+     assert_equal('bar', foo)
+   end
 end

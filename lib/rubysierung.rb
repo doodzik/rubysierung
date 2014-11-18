@@ -37,4 +37,5 @@ module Rubysierung
 
   @__types = Rubysierung::Types.types
   @__error_data = {}
+  @__defaults = {}
 end

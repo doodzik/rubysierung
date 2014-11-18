@@ -4,7 +4,17 @@ module Rubysierung::Core
       def_line = IO.readlines(file)[line]
       flatten_hash = Hash[*def_line.scan(params_matcher).flatten]
       myhash = flatten_hash.reject { |k,v| v =~ /^[^A-Z]/}
-      Hash[myhash.map{|(k,v)| [k.to_sym, Kernel.const_get(v)]}]
+      myhash.map do |(k,v)|
+        const, default = v.scan(/([A-Z]\w*?)\s*\|\|\s*(.+)/).flatten
+        if const && default
+          myhash[k] = const
+          @__defaults[k.to_sym] ||= {} 
+          @__defaults[k.to_sym] = default
+        end
+      end
+      Hash[myhash.map do |(k,v)|
+        [k.to_sym, Kernel.const_get(v)]
+      end]
     end
 
     def convert_multiple(klass_hash:, value_hash:)
@@ -19,6 +29,8 @@ module Rubysierung::Core
 
     def convert(klass:, value:)
       strict = 0
+      # TODO don't use @__error_data[:var_sym] 
+      value = value ? value : eval(@__defaults[@__error_data[:var_sym]])
       @__types.map do |type|
         strict, klass = get_kind(klass: klass)
         begin
