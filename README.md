@@ -43,7 +43,7 @@ class Example
 
   # add custom Types
   # [TypeClass, StandartDuckTypeAsSymbol, StrictDuckTypeAsSymbol]# TODO change to proper name
-  @__add_type[CustomTyp, :to_s, :to_str]
+  @__add_type[CustomType, :to_s, :to_str]
 
   # define foo to respond to :to_s and bar to :to_i
   def one(foo: String, bar: Integer)
@@ -56,7 +56,7 @@ class Example
   end
 
   # use a custom type
-  def self.four(foo: ,bar: CustomType)
+  def self.four(foo: , bar: CustomType)
     [foo, bar]
   end
 
