@@ -43,7 +43,7 @@ class Example
   # if the type doesnt match Rubisierung will raise an Error messages
 
   # add custom Types
-  # [TypeClass, StandardDuckTypeAsSymbol, StrictDuckTypeAsSymbol]# TODO change to proper name
+  # [TypeClass, StandardDuckTypeAsSymbol, StrictDuckTypeAsSymbol]
   @__add_type[CustomType, :to_s, :to_str]
 
   # define foo to respond to :to_s and bar to :to_i
@@ -73,7 +73,7 @@ class Example
 end
 ```
 
-## what would it look like normally
+## what it would look like normally
 ```ruby
 def one(foo:, bar:)
   sFoo = foo.to_s
