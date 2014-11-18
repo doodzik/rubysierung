@@ -40,9 +40,11 @@ module Rubysierung::Core
         rescue NoMethodError
           # return argument, param, duck_type, calle/receiver -> file, line
           if strict == 0
-            raise Rubysierung::Error::Standart, "Rubysierung::Error::Standart: Class:#{klass}, DuckType:#{type[2]}, Method:#{@__error_data[:method_object]}:#{@__error_data[:method_file]}#{@__error_data[:method_name]}:#{@__error_data[:method_line]} -- called on #{@__error_data[:caller]} with #{@__error_data[:var_sym]}:#{value} of #{value.class} doesn't respond to #{type[2]}"
+            @__error_data.merge({klass: klass, type: type[1], value: value, value_class: value.class})
+            raise Rubysierung::Error::Standart.new(@__error_data)
           else
-            raise Rubysierung::Error::Strict, "Rubysierung::Error::Strict: Class:#{klass}, DuckType:#{type[2]}, Method:#{@__error_data[:method_object]}:#{@__error_data[:method_file]}#{@__error_data[:method_name]}:#{@__error_data[:method_line]} -- called on #{@__error_data[:caller]} with #{@__error_data[:var_sym]}:#{value} of #{value.class} doesn't respond to #{type[2]}"
+            @__error_data.merge({klass: klass, type: type[2], value: value, value_class: value.class})
+            raise Rubysierung::Error::Strict.new(@__error_data)
           end
         end
       end
