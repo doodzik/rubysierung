@@ -51,17 +51,17 @@ class Example
   end
 
   # you can still define empty/default parameters
-  def self.three(foo: , bar: 'hallo World')
+  def self.two(foo: , bar: 'hallo World')
     [foo, bar]
   end
 
   # use a custom type
-  def self.four(foo: , bar: CustomType)
+  def self.three(foo: , bar: CustomType)
     [foo, bar]
   end
 
   # define foo to respond to :to_str (strict type)
-  def self.five(foo: Strict::String, bar: Integer)
+  def self.four(foo: Strict::String, bar: Integer)
     [foo, bar]
   end
 end
