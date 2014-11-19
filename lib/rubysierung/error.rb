@@ -1,11 +1,11 @@
 module Rubysierung
   class Error < StandardError
     def initialize(error_data)
-      @__error_data = error_data
+      @error_data = error_data
     end
 
     def message
-      "Class:#{@__error_data[:klass]}, DuckType:#{@__error_data[:type]}, Method:#{@__error_data[:method_object]}:#{@__error_data[:method_file]}#{@__error_data[:method_name]}:#{@__error_data[:method_line]} -- called on #{@__error_data[:caller]} with #{@__error_data[:var_sym]}:#{@__error_data[:value]} of #{@__error_data[:value_class]} doesn't respond to #{@__error_data[:type]}"
+      "Class:#{@error_data[:klass]}, DuckType:#{@error_data[:type]}, Method:#{@error_data[:method_object]}:#{@error_data[:method_file]}#{@error_data[:method_name]}:#{@error_data[:method_line]} -- called on #{@error_data[:caller]} with #{@error_data[:var_sym]}:#{@error_data[:value]} of #{@error_data[:value_class]} doesn't respond to #{@error_data[:type]}"
     end
 
     def self.set_data(_self:, name:, method_object:, file:, line:)
@@ -19,14 +19,14 @@ module Rubysierung
   end
 
   class Error::Standard < Error
-    def message(error_hash)
+    def message
       "Rubysierung::Error::Standart: #{super}"
     end
   end
 
   class Error::Strict < Error
-    def message(error_data)
-      "Rubysierung::Error::Strict: #{super}"  
+    def message
+      "Rubysierung::Error::Strict: #{super}"
     end
   end
 end

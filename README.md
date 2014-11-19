@@ -33,9 +33,8 @@ require 'CallBaecker'
 require 'rubysierung'
 
 # define a custom type
-Strict::CustomType
-class CustomType
-end
+class Strict::CustomTyp;end
+class CustomTyp;end
 
 class Example
   extend Rubysierung
@@ -66,7 +65,7 @@ class Example
   def self.four(foo: Strict::String, bar: Integer)
     [foo, bar]
   end
-  
+
   # with default parameter
   def self.five(foo: String||'I am a default :)', bar: Integer||42)
     [foo, bar]

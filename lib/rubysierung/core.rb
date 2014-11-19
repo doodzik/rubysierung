@@ -1,4 +1,6 @@
-module Rubysierung::Core
+
+module Rubysierung
+  module Core
     def get_default_hash_from_fileline(file:, line:)
       params_matcher =  /([a-z][a-zA-Z]+):\s*([^,\n)]+)/
       def_line = IO.readlines(file)[line]
@@ -8,12 +10,12 @@ module Rubysierung::Core
         const, default = v.scan(/([A-Z]\w*?)\s*\|\|\s*(.+)/).flatten
         if const && default
           myhash[k] = const
-          @__defaults[k.to_sym] ||= {} 
+          @__defaults[k.to_sym] ||= {}
           @__defaults[k.to_sym] = default
         end
       end
       Hash[myhash.map do |(k,v)|
-        [k.to_sym, Kernel.const_get(v)]
+        [k.to_sym, Object.const_get(v)]
       end]
     end
 
@@ -29,7 +31,7 @@ module Rubysierung::Core
 
     def convert(klass:, value:)
       strict = 0
-      # TODO don't use @__error_data[:var_sym] 
+      # TODO don't use @__error_data[:var_sym]
       value = value ? value : eval(@__defaults[@__error_data[:var_sym]])
       @__types.map do |type|
         strict, klass = get_kind(klass: klass)
@@ -68,4 +70,5 @@ module Rubysierung::Core
       err_data[:method_line]   = line
       _self.instance_variable_set :@__error_data, err_data
     end
+  end
 end
