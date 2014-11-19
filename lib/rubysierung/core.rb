@@ -1,37 +1,31 @@
+require 'Rubysierung/ast'
 
 module Rubysierung
   module Core
+
     def get_default_hash_from_fileline(file:, line:)
-      params_matcher =  /([a-z][a-zA-Z]+):\s*([^,\n)]+)/
-      def_line = IO.readlines(file)[line]
-      flatten_hash = Hash[*def_line.scan(params_matcher).flatten]
-      myhash = flatten_hash.reject { |_, v| v =~ /^[^A-Z]/ }
-      myhash.map do |k, v|
-        const, default = v.scan(/([A-Z]\w*?)\s*\|\|\s*(.+)/).flatten
-        next unless const && default
-        myhash[k] = const
-        @__defaults[k.to_sym] ||= {}
-        @__defaults[k.to_sym] = default
-      end
-      Hash[myhash.map do |k, v|
-        [k.to_sym, Kernel.const_get(v)]
-      end]
+      param_hash, defaults = Rubysierung::ASTDefaultStatic.new(IO.readlines(file)[line]).method.params
+      @__defaults.merge(defaults)
+      param_hash, defaults = set_default_param(param_hash)
+      @__defaults.merge(defaults)
+      convert_value_to_constant param_hash
     end
 
-    def convert_multiple(klass_hash:, value_hash:)
+    def call(klass_hash:, value_hash:)
       return_hash = {}
       return value_hash if klass_hash.empty?
       klass_hash.keys.map do |key|
         @__error_data[:var_sym] = key
-        return_hash[key] = convert(klass: klass_hash[key], value: value_hash[key])
+        value = value_hash[key] ? value_hash[key] : eval(@__defaults[key])
+        return_hash[key] = convert(klass: klass_hash[key], value: value)
       end
       value_hash.merge return_hash
     end
 
-    def convert(klass:, value:)
+    private
+
+    def convert(klass:, value: nil)
       strict = 0
-      # TODO: don't use @__error_data[:var_sym]
-      value = value ? value : eval(@__defaults[@__error_data[:var_sym]])
       @__types.map do |type|
         strict, klass = get_kind(klass: klass)
         klass == type[0] and return value.send(type[1 + strict])
@@ -39,6 +33,7 @@ module Rubysierung
       value
     rescue NoMethodError
       @__error_data.merge({ klass: klass, type: type[1 + strict], value: value, value_class: value.class })
+      # TODO: shorten
       fail strict == 0 ? Rubysierung::Error::Standard.new(@__error_data) : Rubysierung::Error::Strict.new(@__error_data)
     end
 
@@ -49,6 +44,26 @@ module Rubysierung
       else
         [0, klass]
       end
+    end
+
+    def convert_value_to_constant(hash)
+      Hash[hash.map do |k, v|
+        [k.to_sym, Kernel.const_get(v)]
+      end]
+    end
+
+    # TODO mv this onto ASTDefaultStatic
+    def set_default_param(hash)
+      defaults = {}
+      hash1 = {}
+      hash.map do |k, v|
+        const, default = v.scan(Rubysierung::ASTDefaultStatic.regex_default_arg).flatten
+        next unless const && default
+        hash1[k] = const
+        @__defaults[k.to_sym] ||= {}
+        @__defaults[k.to_sym] = default
+      end
+      [hash.merge(hash1), @__defaults]
     end
   end
 end

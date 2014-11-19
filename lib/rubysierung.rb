@@ -22,7 +22,7 @@ module Rubysierung
     # TODO: better parameter names
     base.instance_variable_set :@__before_hook, -> (i, ii, callee) do
       @__error_data[:caller] = callee
-      Rubysierung.convert_multiple(klass_hash: i, value_hash: ii)
+      Rubysierung.call(klass_hash: i, value_hash: ii)
     end
 
     base.instance_variable_set :@__setup_instance_method, -> (_self, name) do
