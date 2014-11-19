@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require 'Rubysierung/Error'
+require 'rubysierung'
 
 class SetupError
   attr_reader :__error_data
