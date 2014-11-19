@@ -4,7 +4,7 @@ require 'rubysierung/error'
 require 'rubysierung/core'
 
 module Rubysierung
-  class << self  
+  class << self
     include Rubysierung::Core
   end
 

@@ -5,7 +5,7 @@ module Rubysierung
     end
 
     def message
-      "Class:#{@error_data[:klass]}, DuckType:#{@error_data[:type]}, Method:#{@error_data[:method_object]}:#{@error_data[:method_file]}#{@error_data[:method_name]}:#{@error_data[:method_line]} -- called on #{@error_data[:caller]} with #{@error_data[:var_sym]}:#{@error_data[:value]} of #{@error_data[:value_class]} doesn't respond to #{@error_data[:type]}"
+      "Class:#{@error_data[:klass]}, DuckType:#{@error_data[:type]}, Method:#{@error_data[:method_object]}:#{@error_data[:method_file]} #{@error_data[:method_name]}:#{@error_data[:method_line]} -- called on #{@error_data[:caller]} with #{@error_data[:var_sym]}:#{@error_data[:value]} of #{@error_data[:value_class]} doesn't respond to #{@error_data[:type]}"
     end
 
     def self.set_data(_self:, name:, method_object:, file:, line:)
@@ -20,7 +20,7 @@ module Rubysierung
 
   class Error::Standard < Error
     def message
-      "Rubysierung::Error::Standart: #{super}"
+      "Rubysierung::Error::Standard: #{super}"
     end
   end
 
