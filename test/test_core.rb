@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require 'rubysierung'
 
-
 class RubysierungCoreTest < Minitest::Test
   def test_rubisierung_converte_Int_to_string
     assert_equal('23', Rubysierung.convert(klass: String, value: 23))
@@ -15,14 +14,14 @@ class RubysierungCoreTest < Minitest::Test
   end
 
   def test_run_type_hash_agains_value_hash
-    assert_equal({foo: 23, bar:'23'},
-                 Rubysierung.convert_multiple(value_hash: {foo: '23', bar: 23},
-                                              klass_hash: {foo: Integer, bar: String}))
+    assert_equal({ foo: 23, bar: '23' },
+                 Rubysierung.convert_multiple(value_hash: { foo: '23', bar: 23 },
+                                              klass_hash: { foo: Integer, bar: String }))
   end
   def test_run_type_hash_agains_value_hash_without_a_class_on_klass_hash
-    assert_equal({foo: '23', bar:'23'},
-                 Rubysierung.convert_multiple(value_hash: {foo: '23', bar: 23},
-                                              klass_hash: {foo: 14, bar: String}))
+    assert_equal({ foo: '23', bar: '23' },
+                 Rubysierung.convert_multiple(value_hash: { foo: '23', bar: 23 },
+                                              klass_hash: { foo: 14, bar: String }))
   end
 
   def test_is_strict

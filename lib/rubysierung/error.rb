@@ -17,7 +17,7 @@ module Rubysierung
       _self.instance_variable_set :@__error_data, err_data
     end
   end
-
+  
   class Error::Standard < Error
     def message
       "Rubysierung::Error::Standard: #{super}"

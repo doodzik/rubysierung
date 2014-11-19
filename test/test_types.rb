@@ -13,7 +13,7 @@ class SetupRubysierungTypes
   @__add_type[CustomTyp, :to_s, :to_str]
 
   # custom Class
-  def self.example1(foo: ,bar: CustomTyp)
+  def self.example1(foo:, bar: CustomTyp)
     [foo, bar]
   end
 
@@ -39,12 +39,10 @@ class RubysierungTypesTest < Minitest::Test
     foo, bar = SetupRubysierungTypes.example2(foo: '4', bar: 2)
     assert_equal(2, bar)
     assert_equal('4', foo)
-    begin
-     SetupRubysierungTypes.example2(foo: 4, bar: 2)
-      assert_equal(false, true)
-    rescue StandardError => e
-      assert_equal(true, true)
-    end
+    SetupRubysierungTypes.example2(foo: 4, bar: 2)
+    assert_equal(false, true)
+  rescue StandardError
+    assert_equal(true, true)
   end
 
   def test_example_3_custum_type_strict

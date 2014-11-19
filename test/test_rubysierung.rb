@@ -14,7 +14,7 @@ class SetupRubysierung
     [foo, bar]
   end
 
-  def self.example3(foo: , bar: 'hallo World')
+  def self.example3(foo:, bar: 'hallo World')
     [foo, bar]
   end
 
@@ -26,26 +26,26 @@ end
 
 class RubysierungTest < Minitest::Test
   def test_example_2_standart
-    foo, bar= SetupRubysierung.example2(foo: 4, bar: '3')
+    foo, bar = SetupRubysierung.example2(foo: 4, bar: '3')
     assert_equal(3, bar)
     assert_equal('4', foo)
   end
 
   def test_example_1_instance_method
-    foo, bar= SetupRubysierung.new.example1(foo: 4, bar: '3')
+    foo, bar = SetupRubysierung.new.example1(foo: 4, bar: '3')
     assert_equal(3, bar)
     assert_equal('4', foo)
   end
 
   def test_example_3_default_works
-    foo, bar= SetupRubysierung.example3(foo: 4)
+    foo, bar = SetupRubysierung.example3(foo: 4)
     assert_equal('hallo World', bar)
     assert_equal(4, foo)
   end
 
   def test_example_4_default_value
-     foo, bar = SetupRubysierung.example4(bar: 'buz')
-     assert_equal('buz', bar)
-     assert_equal('bar', foo)
+    foo, bar = SetupRubysierung.example4(bar: 'buz')
+    assert_equal('buz', bar)
+    assert_equal('bar', foo)
   end
 end

@@ -52,12 +52,12 @@ class Example
   end
 
   # you can still define empty/default parameters
-  def self.two(foo: , bar: 'hallo World')
+  def self.two(foo:, bar: 'hallo World')
     [foo, bar]
   end
 
   # use a custom type
-  def self.three(foo: , bar: CustomType)
+  def self.three(foo:, bar: CustomType)
     [foo, bar]
   end
 
@@ -81,6 +81,9 @@ def one(foo:, bar:)
   [sFoo, iBar]
 end
 ```
+
+## Other static Typing implementations
+https://github.com/hannestyden/typo/blob/master/typo.rb
 
 ## Contributing
 
