@@ -9,18 +9,20 @@ module Rubysierung
     include Rubysierung::Core
   end
 
+  @__types = Rubysierung::Types.types
+  @__error_data = {}
+  @__defaults = {}
+
   def self.extended(base)
-    # attr_reader for types TODO: to method
+    # TODO: access __type through method
     base.instance_variable_set :@__types_show, -> () do
       puts @__types
     end
 
-    # attr_writer for types TODO: to method
     base.instance_variable_set :@__add_type, -> (klass, standard, strict) do
       @__types << [klass, standard, strict]
     end
 
-    # TODO: better parameter names
     base.instance_variable_set :@__before_hook, -> (klass_hash, value_hash, callee) do
       @__error_data[:caller] = callee
       Rubysierung.call(klass_hash: klass_hash, value_hash: value_hash)
@@ -40,8 +42,4 @@ module Rubysierung
 
     base.include CallBaecker
   end
-
-  @__types = Rubysierung::Types.types
-  @__error_data = {}
-  @__defaults = {}
 end
