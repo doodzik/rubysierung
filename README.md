@@ -33,6 +33,7 @@ require 'CallBaecker'
 require 'rubysierung'
 
 # define a custom type
+Strict::CustomType
 class CustomType
 end
 

@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'CallBaecker'
 require 'rubysierung'
 
+class Strict::CustomType;end;
 class CustomTyp
 end
 
@@ -35,6 +36,11 @@ class Setup
 
   # Default
   def self.example6(foo: String||'bar', bar: String||'foo')
+    [foo, bar]
+  end
+  
+  # Custom strict
+  def self.example7(foo: Strict::String, bar: Strict::CustomType)
     [foo, bar]
   end
 end
@@ -107,5 +113,11 @@ class RubysierungTest < Minitest::Test
      foo, bar = Setup.example6(bar: 'buz')
      assert_equal('buz', bar)
      assert_equal('bar', foo)
-   end
+  end
+  
+  def test_example_7_custum_type_strict
+    foo, bar = Setup.example4(foo: 4, bar: 'hi')
+    assert_equal('hi', 'hi')
+    assert_equal(4, foo)
+  end
 end
