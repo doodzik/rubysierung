@@ -1,4 +1,4 @@
-require 'Rubysierung/ast'
+require 'rubysierung/ast'
 
 module Rubysierung
   module Core

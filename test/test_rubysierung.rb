@@ -1,10 +1,8 @@
 require 'minitest/autorun'
-require 'CallBaecker'
 require 'rubysierung'
 
 class SetupRubysierung
   extend Rubysierung
-  include CallBaecker
 
   def example1(foo: String, bar: Integer)
     [foo, bar]

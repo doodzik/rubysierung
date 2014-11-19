@@ -1,5 +1,4 @@
 require 'minitest/autorun'
-require 'CallBaecker'
 require 'rubysierung'
 
 class Strict::CustomTyp;end
@@ -8,7 +7,6 @@ class CustomTyp;end
 
 class SetupRubysierungTypes
   extend Rubysierung
-  include CallBaecker
 
   @__add_type[CustomTyp, :to_s, :to_str]
 

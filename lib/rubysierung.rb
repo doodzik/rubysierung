@@ -2,6 +2,7 @@ require 'rubysierung/version'
 require 'rubysierung/types'
 require 'rubysierung/error'
 require 'rubysierung/core'
+require 'CallBaecker'
 
 module Rubysierung
   class << self
@@ -36,6 +37,8 @@ module Rubysierung
       Error.set_data(_self: self, name: name, method_object: _self.name, file: file, line: line - 1)
       get_default_hash_from_fileline(file: file, line: line - 1)
     end
+
+    base.include CallBaecker
   end
 
   @__types = Rubysierung::Types.types

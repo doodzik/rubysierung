@@ -13,7 +13,6 @@ Add this line to your application's Gemfile:
 # You can only use Rubysierung in a file context, see issue #5 and #7.
 
 gem 'rubysierung'
-gem 'CallBaecker', '~> 0.0.3'
 ```
 
 And then execute:
@@ -29,7 +28,6 @@ Or install it yourself as:
 ## Have a look at all available [Types] (https://github.com/doodzik/rubysierung/blob/master/lib/rubysierung/types.rb#L3-L19)
 
 ```ruby
-require 'CallBaecker'
 require 'rubysierung'
 
 # define a custom type
@@ -38,7 +36,6 @@ class CustomTyp;end
 
 class Example
   extend Rubysierung
-  include CallBaecker # include Callbaecker after Rubysierung
 
   # if the type doesnt match Rubisierung will raise an Error messages
 
