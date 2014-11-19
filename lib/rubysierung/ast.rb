@@ -25,10 +25,10 @@ module Rubysierung
 
   class ASTDefaultStatic < AST
     def params
-
-      [super, {}]
-
+      set_default_param super
     end
+
+    private
 
     def self.regex_default_arg
       /([A-Z]\w*?)\s*\|\|\s*(.+)/
@@ -38,7 +38,7 @@ module Rubysierung
       defaults = {}
       hash1 = {}
       hash.map do |k, v|
-        const, default = v.scan(regex_default_arg).flatten
+        const, default = v.scan(/([A-Z]\w*?)\s*\|\|\s*(.+)/).flatten
         next unless const && default
         hash1[k] = const
         defaults[k.to_sym] ||= {}

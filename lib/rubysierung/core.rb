@@ -5,9 +5,7 @@ module Rubysierung
 
     def get_default_hash_from_fileline(file:, line:)
       param_hash, defaults = Rubysierung::ASTDefaultStatic.new(IO.readlines(file)[line]).method.params
-      @__defaults.merge(defaults)
-      param_hash, defaults = set_default_param(param_hash)
-      @__defaults.merge(defaults)
+      @__defaults = @__defaults.merge(defaults)
       convert_value_to_constant param_hash
     end
 
@@ -50,20 +48,6 @@ module Rubysierung
       Hash[hash.map do |k, v|
         [k.to_sym, Kernel.const_get(v)]
       end]
-    end
-
-    # TODO mv this onto ASTDefaultStatic
-    def set_default_param(hash)
-      defaults = {}
-      hash1 = {}
-      hash.map do |k, v|
-        const, default = v.scan(Rubysierung::ASTDefaultStatic.regex_default_arg).flatten
-        next unless const && default
-        hash1[k] = const
-        @__defaults[k.to_sym] ||= {}
-        @__defaults[k.to_sym] = default
-      end
-      [hash.merge(hash1), @__defaults]
     end
   end
 end
