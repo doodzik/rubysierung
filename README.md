@@ -89,3 +89,7 @@ https://github.com/hannestyden/typo/blob/master/typo.rb
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/doodzik/rubysierung/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
