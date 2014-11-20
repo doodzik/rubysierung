@@ -3,7 +3,7 @@ require 'rubysierung/error'
 module Rubysierung
   module Core
     # sets defaults as @__defaults
-    # @param ast [ASTStaticDefault] an instance of modefied ruby ast class
+    # @param ast [AST] an instance of modefied ruby ast class
     # @todo refactor into adapter
     # @return [Hash<Symbol, Constant>]
     def default_hash(ast)

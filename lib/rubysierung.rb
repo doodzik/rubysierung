@@ -63,7 +63,7 @@ module Rubysierung
       file, line = _self.instance_method(name).source_location
       Error.set_data(_self: self, name: name, method_object: _self.name, file: file, line: line - 1)
       ruby_str = IO.readlines(file)[line-1]
-      ast = Rubysierung::ASTStaticDefault.new(ruby_str)
+      ast = Rubysierung::AST.new(ruby_str)
       default_hash(ast)
     end
 
@@ -78,7 +78,7 @@ module Rubysierung
       file, line = _self.method(name).source_location
       Error.set_data(_self: self, name: name, method_object: _self.name, file: file, line: line - 1)
       ruby_str = IO.readlines(file)[line-1]
-      ast = Rubysierung::ASTStaticDefault.new(ruby_str)
+      ast = Rubysierung::AST.new(ruby_str)
       default_hash(ast)
     end
 

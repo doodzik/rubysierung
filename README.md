@@ -11,7 +11,6 @@ Add this line to your application's Gemfile:
 ```ruby
 # ruby 2.1.0
 # You can only use Rubysierung in a file context, see issue #5 and #7.
-
 gem 'rubysierung'
 ```
 
