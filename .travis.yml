@@ -4,6 +4,9 @@ rvm:
 deploy:
   provider: rubygems
   on:
+    all_branches: true
     tags: true
+    repo: doodzik/rubysierung
   api_key:
     secure: Y7POmuScGqytztSAB+XmVKuORZA7rkgIB9YQ/nTAKfT9BliXlTuKHKLpYGbbnh/oxm5YLKMYicOGC3jSG7ReYhNiRuVW1CU2pdxzY/iVFaLJzhaerswKtdz10fQZSCD/cnsT5AJaowDiBbOHRDCFBp3BaY39ltoPX6YrBPLzLzA=
+  gem: rubysierung

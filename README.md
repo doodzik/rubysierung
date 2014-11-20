@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/doodzik/rubysierung.svg?branch=master)](https://travis-ci.org/doodzik/rubysierung)
 
-Rubysierung is the type system Ruby deserves
+Rubysierung is an implementation of Conversion Typing in Ruby
 
 ## Installation
 
@@ -30,9 +30,12 @@ Or install it yourself as:
 ```ruby
 require 'rubysierung'
 
-# define a custom type
+# define a custom types
 class Strict::CustomTyp;end
 class CustomTyp;end
+
+class Strict::CustomTypX;end
+class CustomTypX;end
 
 class Example
   extend Rubysierung
@@ -40,8 +43,10 @@ class Example
   # if the type doesnt match Rubisierung will raise an Error messages
 
   # add custom Types
-  # [TypeClass, StandardDuckTypeAsSymbol, StrictDuckTypeAsSymbol]
+  # if you don't specify a Strict Type the standard type is being set for it
+  # [TypeClass, StandardConversionMethodAsSymbol, StrictConversionMethodSymbol]
   @__add_type[CustomType, :to_s, :to_str]
+  @__add_type[CustomTypeX, :to_s]
 
   # define foo to respond to :to_s and bar to :to_i
   def one(foo: String, bar: Integer)
@@ -63,7 +68,7 @@ class Example
     [foo, bar]
   end
 
-  # with default parameter
+  # with default parameters
   def self.five(foo: String||'I am a default :)', bar: Integer||42)
     [foo, bar]
   end
