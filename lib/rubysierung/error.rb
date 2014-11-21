@@ -10,9 +10,9 @@ module Rubysierung
     # @return [Rubysierung::Error::Standard|Rubysierung::Error::Strict] instance of one of the two classes
     def raise_child(strict)
       if strict == 0
-        Rubysierung::Error::Standard.new(@__error_data)
+        Rubysierung::Error::Standard.new(@error_data)
       else
-        Rubysierung::Error::Strict.new(@__error_data)
+        Rubysierung::Error::Strict.new(@error_data)
       end
     end
 

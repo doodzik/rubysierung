@@ -19,8 +19,8 @@ module Rubysierung
     #   values the type was applied and merged with the other values
     def call(klass_hash:, value_hash:)
       return value_hash if klass_hash.empty?
-      return_hash = each_param(klass_hash, value_hash) do
-        |key| @__error_data[:var_sym] = key
+      return_hash = each_param(klass_hash, value_hash) do |key|
+        @__error_data[:var_sym] = key
       end
       value_hash.merge return_hash
     end

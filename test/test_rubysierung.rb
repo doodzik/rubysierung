@@ -20,9 +20,29 @@ class SetupRubysierung
   def self.example4(foo: String||'bar', bar: String||'foo')
     [foo, bar]
   end
+
+  # Default
+  def self.example_err(foo: Strict::String, bar: String||'foo')
+    [foo, bar, __LINE__]
+  end
 end
 
 class RubysierungTest < Minitest::Test
+  def test_error_implementation
+    SetupRubysierung.example_err(foo: 4, bar: '3')
+  rescue Rubysierung::Error::Strict => e
+    foo, bar, line = SetupRubysierung.example_err(foo: '4', bar: '3')
+    line_now = __LINE__ - 1
+    line    -= 1
+    file     = __FILE__
+    method_name = 'example_err'
+    in_method = 'test_error_implementation'
+    method_on_class = 'SetupRubysierungTypes'
+    err_class = 'Rubysierung::Error::Strict'
+    str = "#{err_class} Class: Strict::String, Conversion Method: to_str, Method:#{method_on_class}:#{file} #{method_name}:#{line} -- called on #{file}:#{line_now}:in `rescue in #{in_method}' with foo: 4 of Integer doesn't respond to to_str"
+    assert_equal(str, e.message)
+  end
+
   def test_example_2_standart
     foo, bar = SetupRubysierung.example2(foo: 4, bar: '3')
     assert_equal(3, bar)

@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/doodzik/rubysierung.svg?branch=master)](https://travis-ci.org/doodzik/rubysierung)
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/doodzik/rubysierung/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 Rubysierung is an implementation of Conversion Typing in Ruby
 
 ## Installation
