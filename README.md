@@ -4,6 +4,7 @@
 
 Rubysierung is an implementation of Conversion Typing in Ruby
 
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -13,6 +14,8 @@ Add this line to your application's Gemfile:
 # You can only use Rubysierung in a file context, see issue #5 and #7.
 gem 'rubysierung'
 ```
+if you installed rubysierung from rubygems please consider looking at the instructions for its version
+https://github.com/doodzik/rubysierung/tree/0.0.2
 
 And then execute:
 
