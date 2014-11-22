@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/doodzik/rubysierung.svg?branch=master)](https://travis-ci.org/doodzik/rubysierung)
 
+[![doodzik/rubysierung API Documentation](https://www.omniref.com/doodzik/rubysierung.png)](https://www.omniref.com/doodzik/rubysierung)
+
 Rubysierung is an implementation of Conversion Typing in Ruby
 
 
