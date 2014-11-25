@@ -4,7 +4,7 @@
 
 [![doodzik/rubysierung API Documentation](https://www.omniref.com/doodzik/rubysierung.png)](https://www.omniref.com/doodzik/rubysierung)
 
-Rubysierung is an implementation of Conversion Typing in Ruby
+Rubysierung is an implementation of Soft Typing in Ruby
 
 
 ## Installation
