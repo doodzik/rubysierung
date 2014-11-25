@@ -88,8 +88,9 @@ def one(foo:, bar:)
 end
 ```
 
-## Other static Typing implementations
-https://github.com/hannestyden/typo/blob/master/typo.rb
+## Other Typing implementations
+(contracts.ruby)[https://github.com/egonSchiele/contracts.ruby]
+(typo)[https://github.com/hannestyden/typo/blob/master/typo.rb]
 
 ## Contributing
 
