@@ -3,10 +3,10 @@ rvm:
 - 2.1.0
 deploy:
   provider: rubygems
-  on:
-    all_branches: true
-    tags: true
-    repo: doodzik/rubysierung
   api_key:
-    secure: Y7POmuScGqytztSAB+XmVKuORZA7rkgIB9YQ/nTAKfT9BliXlTuKHKLpYGbbnh/oxm5YLKMYicOGC3jSG7ReYhNiRuVW1CU2pdxzY/iVFaLJzhaerswKtdz10fQZSCD/cnsT5AJaowDiBbOHRDCFBp3BaY39ltoPX6YrBPLzLzA=
+    secure: QA2OqytUOFV+W0dcIhULAS6bEZTMRfwrWHFmi1T4Ce3MtZ2o4f2kYsE+9wbFmfKqI35NljsUZYzunbAADGAXuGiir0pzFh5XzCJX/SPCUeNj79UwadByMmfI+dHzRTQdnPeGDsxBSg+N35yPCNenJlAgfX7Ed5YXJ4bAbWjPsds=
   gem: rubysierung
+  on:
+    tags: true
+    all_branches: true
+    repo: doodzik/rubysierung
