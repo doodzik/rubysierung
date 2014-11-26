@@ -4,7 +4,7 @@
 
 [![doodzik/rubysierung API Documentation](https://www.omniref.com/github/doodzik/rubysierung.png)](https://www.omniref.com/github/doodzik/rubysierung/HEAD)
 
-Rubysierung is an implementation of Conversion Typing in Ruby
+Rubysierung is an implementation of Soft Typing in Ruby
 
 
 ## Installation
@@ -86,8 +86,9 @@ def one(foo:, bar:)
 end
 ```
 
-## Other static Typing implementations
-https://github.com/hannestyden/typo/blob/master/typo.rb
+## Other Typing implementations
+(contracts.ruby)[https://github.com/egonSchiele/contracts.ruby]
+(typo)[https://github.com/hannestyden/typo/blob/master/typo.rb]
 
 ## Contributing
 
