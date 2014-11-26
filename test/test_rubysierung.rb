@@ -23,7 +23,7 @@ class SetupRubysierung
 
   # Default
   def self.example_err(foo: Strict::String, bar: String||'foo')
-    [foo, bar, (__LINE__ - 1)]
+    [foo, bar, (__LINE__ - 1), caller]
   end
 end
 
@@ -31,9 +31,8 @@ class RubysierungTest < Minitest::Test
   def test_error_implementation
     SetupRubysierung.example_err(foo: 4, bar: '3')
   rescue Rubysierung::Error::Strict => e
-    foo, bar, line = SetupRubysierung.example_err(foo: '4', bar: '3')
-    callee = "/Users/dudzik/programming/rubysierung/test/test_rubysierung.rb:32:in `test_error_implementation'"
-    data = {klass: 'String', type: 'to_str', method_object: 'SetupRubysierung', method_file: __FILE__, method_name: 'example_err', method_line: line, caller: callee , var_sym: 'foo', value: '4', value_class: 'Fixnum'}
+    foo, bar, line, callee = SetupRubysierung.example_err(foo: '4', bar: '3')
+    data = {klass: 'String', type: 'to_str', method_object: 'SetupRubysierung', method_file: __FILE__, method_name: 'example_err', method_line: line, caller: callee[4] , var_sym: 'foo', value: '4', value_class: 'Fixnum'}
     str = Rubysierung::Error::Strict.new(data).message
     assert_equal(str, e.message)
   end
