@@ -18,7 +18,7 @@ class RubysierungErrorTest < Minitest::Test
     [:klass, :type, :method_object, :method_file, :method_name, :method_line, :caller, :var_sym, :value, :value_class, :type].map { |sym| data[sym] = '42' }
     raise Rubysierung::Error.new(data)
   rescue Rubysierung::Error => e
-    assert_equal("Class:42, DuckType:42, Method:42:42 42:42 -- called on 42 with 42:42 of 42 doesn't respond to 42", e.message)
+    assert_equal("Class:42, Conversion Method:42, Method:42:42 42:42 -- called on 42 with 42:42 of 42 doesn't respond to 42", e.message)
   end
 
   def test_Error_Standard
@@ -26,7 +26,7 @@ class RubysierungErrorTest < Minitest::Test
     [:klass, :type, :method_object, :method_file, :method_name, :method_line, :caller, :var_sym, :value, :value_class, :type].map { |sym| data[sym] = '42' }
     raise Rubysierung::Error::Standard.new(data)
   rescue Rubysierung::Error::Standard => e
-    assert_equal("Rubysierung::Error::Standard: Class:42, DuckType:42, Method:42:42 42:42 -- called on 42 with 42:42 of 42 doesn't respond to 42", e.message)
+    assert_equal("Rubysierung::Error::Standard: Class:42, Conversion Method:42, Method:42:42 42:42 -- called on 42 with 42:42 of 42 doesn't respond to 42", e.message)
   end
 
   def test_Error_Strict
@@ -34,7 +34,7 @@ class RubysierungErrorTest < Minitest::Test
     [:klass, :type, :method_object, :method_file, :method_name, :method_line, :caller, :var_sym, :value, :value_class, :type].map { |sym| data[sym] = '42' }
     fail Rubysierung::Error::Strict.new(data)
   rescue Rubysierung::Error::Strict => e
-    assert_equal("Rubysierung::Error::Strict: Class:42, DuckType:42, Method:42:42 42:42 -- called on 42 with 42:42 of 42 doesn't respond to 42", e.message)
+    assert_equal("Rubysierung::Error::Strict: Class:42, Conversion Method:42, Method:42:42 42:42 -- called on 42 with 42:42 of 42 doesn't respond to 42", e.message)
   end
 
   def test_set_data

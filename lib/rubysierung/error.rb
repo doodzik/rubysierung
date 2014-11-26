@@ -19,7 +19,7 @@ module Rubysierung
     # @todo refactor into idependend methods and assemble them inside message
     # @return [String] error message
     def message
-      "Class:#{@error_data[:klass]}, DuckType:#{@error_data[:type]}, Method:#{@error_data[:method_object]}:#{@error_data[:method_file]} #{@error_data[:method_name]}:#{@error_data[:method_line]} -- called on #{@error_data[:caller]} with #{@error_data[:var_sym]}:#{@error_data[:value]} of #{@error_data[:value_class]} doesn't respond to #{@error_data[:type]}"
+      "Class:#{@error_data[:klass]}, Conversion Method:#{@error_data[:type]}, Method:#{@error_data[:method_object]}:#{@error_data[:method_file]} #{@error_data[:method_name]}:#{@error_data[:method_line]} -- called on #{@error_data[:caller]} with #{@error_data[:var_sym]}:#{@error_data[:value]} of #{@error_data[:value_class]} doesn't respond to #{@error_data[:type]}"
     end
 
     # sets @__error_data on provided obj pointer

@@ -16,6 +16,7 @@ module Rubysierung
   @__error_data = {}
   # default parameters of the current method
   @__defaults = {}
+  @__method_data = {}
 
   # @todo access __type through method and make it return the types not print
   # @return [void] puts all current types
@@ -35,10 +36,13 @@ module Rubysierung
     # @param klass_hash [Hash<Symbol, Constant>] holds types for Arguments
     # @param value_hash [Hash<Symbol, Constant>] holds values for Arguments
     # @param callee [String] first element of the current execution stack
+    # @param _self [self]
+    # @param name [String] name of method
     # @see CallBaecker
     # @return [self]
-    base.instance_variable_set :@__before_hook, -> (klass_hash, value_hash, callee) do
+    base.instance_variable_set :@__before_hook, -> (klass_hash, value_hash, callee, _self, name) do
       @__error_data[:caller] = callee
+      Error.set_data @__method_data[name]
       Rubysierung.call(klass_hash: klass_hash, value_hash: value_hash)
     end
 
@@ -61,9 +65,9 @@ module Rubysierung
     # @return [self]
     base.instance_variable_set :@__setup_instance_method, -> (_self, name) do
       file, line = _self.instance_method(name).source_location
-      Error.set_data(_self: self, name: name, method_object: _self.name, file: file, line: line - 1)
       ruby_str = IO.readlines(file)[line-1]
       ast = Rubysierung::AST.new(ruby_str)
+      @__method_data[name] = {_self: self, name: name, method_object: _self.name, file: file, line: line}
       default_hash(ast)
     end
 
@@ -76,9 +80,9 @@ module Rubysierung
     # @return [self]
     base.instance_variable_set :@__setup_class_method, -> (_self, name) do
       file, line = _self.method(name).source_location
-      Error.set_data(_self: self, name: name, method_object: _self.name, file: file, line: line - 1)
       ruby_str = IO.readlines(file)[line-1]
       ast = Rubysierung::AST.new(ruby_str)
+      @__method_data[name] = {_self: self, name: name, method_object: _self.name, file: file, line: line}
       default_hash(ast)
     end
 

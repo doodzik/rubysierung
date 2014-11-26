@@ -53,9 +53,9 @@ module Rubysierung
       type = @__types.reject { |t| klass != t[0] }.flatten
       klass == type[0] ? value.send(type[1 + strict]) : value
     rescue NoMethodError
-      @__error_data.merge(klass: klass, type: type[1 + strict],
+      err = @__error_data.merge(klass: klass, type: type[1 + strict],
                           value: value, value_class: value.class)
-      raise Rubysierung::Error.new(@__error_data).raise_child strict
+      raise Rubysierung::Error.new(err).raise_child strict
     end
 
     # @param klass [String] takes the type of a klass

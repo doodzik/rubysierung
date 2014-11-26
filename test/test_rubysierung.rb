@@ -23,7 +23,7 @@ class SetupRubysierung
 
   # Default
   def self.example_err(foo: Strict::String, bar: String||'foo')
-    [foo, bar, __LINE__]
+    [foo, bar, (__LINE__ - 1)]
   end
 end
 
@@ -32,14 +32,9 @@ class RubysierungTest < Minitest::Test
     SetupRubysierung.example_err(foo: 4, bar: '3')
   rescue Rubysierung::Error::Strict => e
     foo, bar, line = SetupRubysierung.example_err(foo: '4', bar: '3')
-    line_now = __LINE__ - 1
-    line    -= 1
-    file     = __FILE__
-    method_name = 'example_err'
-    in_method = 'test_error_implementation'
-    method_on_class = 'SetupRubysierungTypes'
-    err_class = 'Rubysierung::Error::Strict'
-    str = "#{err_class} Class: Strict::String, Conversion Method: to_str, Method:#{method_on_class}:#{file} #{method_name}:#{line} -- called on #{file}:#{line_now}:in `rescue in #{in_method}' with foo: 4 of Integer doesn't respond to to_str"
+    callee = "/Users/dudzik/programming/rubysierung/test/test_rubysierung.rb:32:in `test_error_implementation'"
+    data = {klass: 'String', type: 'to_str', method_object: 'SetupRubysierung', method_file: __FILE__, method_name: 'example_err', method_line: line, caller: callee , var_sym: 'foo', value: '4', value_class: 'Fixnum'}
+    str = Rubysierung::Error::Strict.new(data).message
     assert_equal(str, e.message)
   end
 
