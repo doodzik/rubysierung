@@ -45,6 +45,10 @@ module Rubysierung
       Error.set_data @__method_data[name]
       Rubysierung.call(klass_hash: klass_hash, value_hash: value_hash)
     end
+    
+    base.instance_variable_set :@__after_hook, -> (data) do
+      data
+    end
 
     # pushes an custom type onto @__types
     # @param klass [Constant] the CustomType
