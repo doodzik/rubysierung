@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/doodzik/rubysierung.png?label=ready&title=Ready)](https://waffle.io/doodzik/rubysierung)
 # Rubysierung
 
 [![Build Status](https://travis-ci.org/doodzik/rubysierung.svg?branch=master)](https://travis-ci.org/doodzik/rubysierung)
