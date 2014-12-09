@@ -1,12 +1,3 @@
 language: ruby
 rvm:
-- 2.1.0
-deploy:
-  provider: rubygems
-  api_key:
-    secure: QA2OqytUOFV+W0dcIhULAS6bEZTMRfwrWHFmi1T4Ce3MtZ2o4f2kYsE+9wbFmfKqI35NljsUZYzunbAADGAXuGiir0pzFh5XzCJX/SPCUeNj79UwadByMmfI+dHzRTQdnPeGDsxBSg+N35yPCNenJlAgfX7Ed5YXJ4bAbWjPsds=
-  gem: rubysierung
-  on:
-    tags: true
-    all_branches: true
-    repo: doodzik/rubysierung
+  - 2.1.1

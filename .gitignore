@@ -12,5 +12,3 @@
 *.o
 *.a
 mkmf.log
-.DS_store
-*.swp

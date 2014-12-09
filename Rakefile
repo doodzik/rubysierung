@@ -1,12 +1,12 @@
-require 'bundler/gem_tasks'
-require 'rake/testtask'
-require 'rubocop/rake_task'
+require "bundler/gem_tasks"
+require "rspec/core/rake_task"
 
-Rake::TestTask.new do |t|
-  t.libs << 'test'
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => :spec
+
+require "rake/extensiontask"
+
+Rake::ExtensionTask.new("rubysierung") do |ext|
+  ext.lib_dir = "lib/rubysierung"
 end
-
-RuboCop::RakeTask.new
-
-desc 'Run tests and rubocop'
-task default: [:test]
