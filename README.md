@@ -88,8 +88,10 @@ end
 ```
 
 ## Other Typing implementations
-(contracts.ruby)[https://github.com/egonSchiele/contracts.ruby]
-(typo)[https://github.com/hannestyden/typo/blob/master/typo.rb]
+
+[contracts.ruby](https://github.com/egonSchiele/contracts.ruby)
+
+[typo](https://github.com/hannestyden/typo/blob/master/typo.rb)
 
 ## Contributing
 
