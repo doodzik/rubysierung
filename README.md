@@ -34,11 +34,11 @@ Or install it yourself as:
 require 'rubysierung'
 
 # define a custom types
-class Strict::CustomTyp;end
-class CustomTyp;end
+class Strict::CustomType;end
+class CustomType;end
 
-class Strict::CustomTypX;end
-class CustomTypX;end
+class Strict::CustomTypeX;end
+class CustomTypeX;end
 
 class Example
   extend Rubysierung
@@ -57,7 +57,7 @@ class Example
   end
 
   # you can still define empty/default parameters
-  def self.two(foo:, bar: 'hallo World')
+  def self.two(foo:, bar: 'hello World')
     [foo, bar]
   end
 
